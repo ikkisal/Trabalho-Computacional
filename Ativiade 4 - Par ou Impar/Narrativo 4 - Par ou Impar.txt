@@ -1,0 +1,5 @@
+1- Pegar o numero
+2- Fazer modulo de 2 no numero
+3- Verificar se tem resto
+4- Se tiver resto o numero é impar
+5- Se o resto for 0 numero é par

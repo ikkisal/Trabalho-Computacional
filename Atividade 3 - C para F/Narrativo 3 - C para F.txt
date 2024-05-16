@@ -1,0 +1,9 @@
+1- Pegar a temperatura em Celsius
+
+2- Multiplicar o numero por 9
+
+3- Dividir o resultante por 5
+
+4- Somar 32 ao numero resultante do passo 3
+
+5- Obter temperatura em Fahrenheit

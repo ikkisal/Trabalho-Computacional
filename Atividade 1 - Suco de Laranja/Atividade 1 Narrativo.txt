@@ -1,0 +1,13 @@
+Inicio
+1 - Pegar uma laranja lima
+2- Verificar se ela esta estragada 
+3- Se estiver pegar outra laranja
+4- Se estiver boa pode continuar
+5- Cortar a laranja ao meio
+6- Espremer a laranja num recipiente
+7- Pegar uma jarra
+8- Botar o suco na jarra
+9- Adcionar Água aos poucos
+10- Se ficou forte botar mais agua
+11- Se ficou bom pode continuar
+Fim
