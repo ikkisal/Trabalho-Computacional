@@ -1,0 +1,7 @@
+1- Pegar um numero Inteiro
+2- Definir o numero como N
+3- Se N for maior que 0 continuar, senão pegar outro numero
+4- Resultado igual a N, Retirar 1 de N
+5- Multiplicar o resultado por X, Retirar 1 de X
+6- Se X for maior que 0, repetir item 5, senão continuar
+7- Resultado do Fatorial
