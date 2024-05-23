@@ -1,0 +1,32 @@
+<script>
+
+    let salario = parseInt(prompt("Qual seu salario base?"))
+    let codigo = parseInt(prompt("Bote o codigo de do seu cargo: Gerente: 101, Engenheiro: 102, Tecnico: 103, Outros: 104"))
+
+    switch (codigo) {
+        case 101:
+
+            alert("Seu salario antigo R$" + salario + " Seu salario atual R$" + (salario*1.1) + " Um aumento de R$" + ((salario*1.1) - salario))
+            
+            break;
+    
+        case 102:
+
+            alert("Seu salario antigo R$" + salario + " Seu salario atual R$" + (salario*1.2) + " Um aumento de R$" + ((salario*1.2) - salario))
+            
+            break;
+    
+        case 103:
+
+            alert("Seu salario antigo R$" + salario + " Seu salario atual R$" + (salario*1.3) + " Um aumento de R$" + ((salario*1.3) - salario))
+            
+            break;
+    
+        default:
+
+            alert("Seu salario antigo R$" + salario + " Seu salario atual R$" + (salario*1.4) + " Um aumento de R$" + ((salario*1.4) - salario))
+
+            break;
+    }
+
+</script>
