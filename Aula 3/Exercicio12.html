@@ -1,0 +1,26 @@
+<script>
+
+
+    let consumo = parseInt(prompt("Quanto de luz foi usufruida?"))
+    let moradia = parseInt(prompt("Digite seu tipo de cliente: 1 para Residencia, 2 para comercio, 3 para industria"))
+
+    switch (moradia) {
+        case 1:
+            alert("Valor da conta eh R$" + (consumo * 0.6))
+            
+            break;
+        case 2:
+            alert("Valor da conta eh R$" + (consumo * 0.48))
+            break;
+
+        case 3:
+            alert("Valor da conta eh R$" + (consumo * 1.29))
+            break;
+
+        default:
+            alert("Defina um valor valido")
+            break;
+    }
+
+
+</script>

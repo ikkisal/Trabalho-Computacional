@@ -1,0 +1,19 @@
+<script>
+
+    let kg = parseInt(prompt("Quantos kg de peixe foram pegos"))
+
+    if (kg <= 50) {
+
+        alert("Voce nao ira pagar multa")
+        
+    }
+
+    if(kg > 50) {
+
+        let multa = (kg - 50) * 4
+
+        alert("Voce devera pagar R$" + multa)
+
+    }
+
+</script>

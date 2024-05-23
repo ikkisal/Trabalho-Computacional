@@ -1,0 +1,44 @@
+<script>
+    let nome = prompt("Qual seu nome?")
+    let nota1 = parseInt(prompt("Qual foi a primeira nota?"))
+    let nota2 = parseInt(prompt("Qual foi a segunda nota?"))
+    let nota3 = parseInt(prompt("Qual foi a terceira nota?"))
+    let media = (nota1 + nota2 + nota3)/3
+
+    if (media>=8 && media<=10) {
+
+        alert("O aluno " + nome + "tem uma avaliacao A")
+        
+    }
+
+    if (media<8 && media>=7) {
+
+        alert("O aluno " + nome + "tem uma avaliacao B")
+        
+    }
+
+    if (media<7 && media>=6) {
+
+        alert("O aluno " + nome + "tem uma avaliacao C")
+        
+    }
+
+    if (media<6 && media>=5) {
+
+        alert("O aluno " + nome + "tem uma avaliacao D")
+        
+    }
+
+    if (media<5 && media>=0) {
+
+        alert("O aluno " + nome + " eh muito burro")
+        
+    }
+
+    else {
+
+        alert("Nota invalida")
+
+    }
+
+</script>

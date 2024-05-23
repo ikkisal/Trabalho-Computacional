@@ -1,0 +1,24 @@
+<script>
+
+    let venda = parseInt(prompt("Por quanto foi vendido"))
+    let custo = parseInt(prompt("Qual o custo do produto"))
+
+    if (venda > custo) {
+
+        alert("Voce obteve um lucro de R$" + (venda - custo))
+        
+    }
+
+    else if (venda == custo) {
+
+        alert("Voce ficou no 0 a 0")
+        
+    }
+
+    else {
+
+        alert("Voce teve um prejuizo de R$" + (custo - venda))
+
+    }
+
+</script>

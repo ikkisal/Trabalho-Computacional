@@ -1,0 +1,25 @@
+<script>
+
+    let nota1 = parseInt(prompt("Qual foi a primeira nota?"))
+    let nota2 = parseInt(prompt("Qual foi a segunda nota?"))
+    let nota3 = parseInt(prompt("Qual foi a terceira nota?"))
+    let aritimetica = 1
+    let ponderada = 2
+
+    let metodo =  parseInt(prompt("Defina o metodo: 1 para aritimetica, 2 para ponderada"))
+
+    switch (metodo) {
+        case 1:
+            alert("Sua media Aritimetica eh: " + ((nota1+nota2+nota3)/3))
+            break;
+
+
+        case 2:
+            alert("Sua media ponderada eh " + ((3*nota1 + 3*nota2 + 4*nota3)/(nota1+nota2+nota3)))
+
+
+        default:
+            break;
+    }
+
+</script>
