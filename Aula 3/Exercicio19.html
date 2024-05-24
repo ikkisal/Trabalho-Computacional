@@ -1,5 +1,91 @@
 <script>
+    let nome = prompt("Qual seu nome?")
+    let sexo = prompt("Qual seu sexo?")
+    let altura = parseFloat(prompt("Qual sua altura (Em metros)"))
+    let idade = parseInt(prompt("Qual sua idade?"))
+    let peso = 0
 
+    switch (sexo) {
+
+        case "Masculino":
+
+            if (altura>1.70) {
+
+                if (idade<=20) {
+
+                    peso = (72.7*altura)-58
+                    
+                }
+
+                if (idade>=21 && idade<=39) {
+
+                    peso = (72.7*altura)-53
+                    
+                }
+
+                if (idade>=40) {
+
+                    peso = (72.7*altura)-48
+                    
+                }
+                
+            }
+
+            else  {
+
+                if (idade<=40) { 
+
+                    peso = (72.7*altura)-50
+
+                }
+
+                if (idade<=20) { 
+
+                    peso = (72.7*altura)-58
+
+                }
+
+
+            }
+
+        case "Feminino":
+            
+            if (altura>1.50) {
+
+                peso = (62.1*altura)-44.7
+
+                
+            }
+
+            if (altura<=1.50) {
+
+                if (idade>=35) {
+
+                    peso = (62.1*altura)-45
+
+                    
+                }
+
+                else {
+
+                    peso = (62.1*altura)-49
+
+
+                }
+                
+            }
+
+            
+            
+            break;
     
+        default:
+
+            alert("Digite um genero valido")
+
+            break;
+    }
+    
+    alert(nome + " do genero " +  sexo + " deveria ter um peso de: " + peso)
 
 </script>

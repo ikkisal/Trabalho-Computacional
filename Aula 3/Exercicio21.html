@@ -1,0 +1,172 @@
+<script>
+
+    let nome = prompt("Defina o nome")
+    let idade = parseInt(prompt("Defina sua idade"))
+    let risco = prompt("Qual seu grau de risco")
+    let grau = 0
+
+    if (idade < 17 || idade > 70) {
+
+        alert("Voce esta fora da faixa de idade")
+
+    }
+
+    else {
+        if (idade >= 17 && idade <= 20) {
+
+            switch (risco) {
+
+                case "Baixo":
+
+                    grau = 1
+
+                    break;
+
+                case "Medio":
+
+                    grau = 2
+
+                    break;
+
+                case "Alto":
+
+                    grau = 3
+
+                    break;
+
+                default:
+
+                    alert("Defina um risco valido")
+
+                    break;
+            }
+
+        }
+
+        if (idade >= 21 && idade <= 24) {
+
+            switch (risco) {
+                case "Baixo":
+
+                    grau = 2
+
+                    break;
+
+                case "Medio":
+
+                    grau = 3
+
+                    break;
+
+                case "Alto":
+
+                    grau = 4
+
+                    break;
+
+                default:
+
+                    alert("Defina um risco valido")
+
+                    break;
+            }
+
+        }
+
+        if (idade >= 25 && idade <= 34) {
+
+            switch (risco) {
+                case "Baixo":
+
+                    grau = 3
+
+                    break;
+
+                case "Medio":
+
+                    grau = 4
+
+                    break;
+
+                case "Alto":
+
+                    grau = 5
+
+                    break;
+
+                default:
+
+                    alert("Defina um risco valido")
+
+                    break;
+            }
+
+        }
+
+        if (idade >= 35 && idade <= 64) {
+
+            switch (risco) {
+                case "Baixo":
+
+                    grau = 4
+
+                    break;
+
+                case "Medio":
+
+                    grau = 5
+
+                    break;
+
+                case "Alto":
+
+                    grau = 6
+
+                    break;
+
+                default:
+
+                    alert("Defina um risco valido")
+
+                    break;
+            }
+
+        }
+
+        if (idade >= 65 && idade <= 70) {
+
+            switch (risco) {
+                case "Baixo":
+
+                    grau = 7
+
+                    break;
+
+                case "Medio":
+
+                    grau = 8
+
+                    break;
+
+                case "Alto":
+
+                    grau = 9
+
+                    break;
+
+                default:
+
+                    alert("Defina um risco valido")
+
+                    break;
+            }
+
+
+
+        }
+
+
+        alert("O cliente " + nome + " tem " + idade + " anos possui um grau de risco de numero " + grau)
+    }
+
+</script>
