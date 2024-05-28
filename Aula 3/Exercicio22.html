@@ -1,5 +1,14 @@
 <script>
 
-    
+    let metros = parseFloat(prompt("Qual tamanho da área que devera ser pintada?"))
+    let litros = metros / 6
+    let lata = Math.floor (litros / 18)
+    let galao = Math.floor (litros / 3.6)
+
+    let preco_lata =  lata * 80
+    let preco_galao = galao * 25
+
+    alert("Caso queira usar latas você prescisara de:" + lata + " e pagara R$:" + preco_lata);
+    alert("Caso queira usar galoes você prescisara de:" + galao + " e pagara R$:" + preco_galao)
 
 </script>
