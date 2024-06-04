@@ -1,0 +1,39 @@
+<script>
+
+    let mediaSalario = 0
+    let mediaFilhos = 0
+    let maiorSalario = 0
+    let Salarios1000 = 0
+    
+    let salario = 0
+    let filhos = 0
+    let pessoas = 0
+    
+    
+    do {
+
+        pessoas++
+        salario = parseFloat(prompt("Digite seu salario"))
+        if (salario>maiorSalario){ 
+        maiorSalario = salario
+        }
+        
+        if(salario<1000){
+            Salarios1000++
+        }
+
+        filhos = parseInt(prompt("Quantos filhos voce tem?"))
+
+        mediaSalario += salario
+        mediaFilhos += filhos
+
+
+
+
+
+    }
+    while (salario>0)
+
+    alert("Salario Medio: R$" + (mediaSalario/pessoas) + "\nMedia de Filhos: " + (mediaFilhos/pessoas) + "\nMaior Salario: R$" + maiorSalario + "\nPorcentagem de Pessoas com Salario abaixo de R$1000: " + ((Salarios1000/pessoas)*100))
+
+</script>
