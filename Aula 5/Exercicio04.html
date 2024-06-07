@@ -1,0 +1,36 @@
+<script>
+
+    let escolha = "1"
+    let n = []
+    
+
+
+    while(escolha != "0") {
+         escolha = prompt("O que voce quer fazer?")
+
+    switch (escolha) {
+        case "adicionar":
+            
+            n.push(prompt("Digite algo para ser adicionado"))
+
+            
+            break;
+    
+     
+        case "mostrar":
+
+            alert(n.join("\n"));
+            
+
+            
+            break;
+    
+    
+        default:
+            alert("Insira valor valido")
+            break;
+    }
+        }
+    
+
+</script>
