@@ -1,0 +1,57 @@
+<script>
+
+    let bolsonaro1 = 0
+    let dilmae2 = 0
+    let temer3 = 0
+    let lula4 = 0
+    let nulo = 0 
+    let branco = 0
+    let urna = 0
+
+    do {
+
+        urna = parseInt(prompt("Digite o numero de seu candidato"))
+
+        switch (urna) {
+            case 1:
+                bolsonaro1++;
+                
+                break;
+
+                case 2:
+
+                    dilmae2++;
+                break;
+
+                case 3:
+
+                    temer3++;
+                break;
+
+                case 4:
+
+                    lula4++;
+                break;
+
+                case 5:
+                    nulo++
+                break;
+                case 6:
+                    branco++
+                break;
+                case 0:
+                    alert("Contabilizando os votos...")
+                    break;
+                            
+            default:
+                alert("Candidato não encontrado")
+                break;
+        }
+        
+    } while (urna != 0);
+
+    alert("Bolsonaro:" + bolsonaro1 + "\nDilmae:" + dilmae2 + "\nTemer:" + temer3 + "\nLulis:" + lula4 + "\nBranco:" + branco + "\nNulo:" + nulo)
+
+
+
+</script>
