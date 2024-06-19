@@ -1,0 +1,29 @@
+<script>
+
+let alturas =  []
+let soma = 0
+let pessoas2m = 0
+
+for (let i = 0; i < 20; i++) {
+    let alt = parseInt(prompt("Defina uma altura"))
+
+    alturas.push(alt)   
+}
+
+for (let i = 0; i < alturas.length; i++) {
+    soma += alturas[i]
+}
+
+for (let i = 0; i < alturas.length; i++) {
+    if (alturas[i]>=2) {
+       pessoas2m++ 
+    }
+
+    // pessoas2m += alturas[i]>=2 ? 2: 0 // Resolução com Ternario
+}
+
+let media = (soma/alturas.length)
+
+alert(media + "\n" + pessoas2m)
+
+</script>

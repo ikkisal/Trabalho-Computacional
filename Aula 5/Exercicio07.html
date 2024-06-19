@@ -1,0 +1,25 @@
+<script>
+
+let clientes = []
+let negativados = 0
+let fecharPrograma = true
+
+while (fecharPrograma) {
+    let conta = parseInt(prompt("Insira a conta do cliente"))
+    let saldo = parseFloat(prompt("Insira o saldo do cliente"))
+
+    clientes.push([conta,saldo])
+
+   fecharPrograma = prompt("Digite 0 pra sair ou Enter para continuar") != "0"
+}
+
+for (let i = 0; i < clientes.length; i++) {
+    if (clientes[i][1]<0) {
+        negativados++
+    }
+}
+
+alert("Clientes cadastrados: " + clientes.length + "\nClientes Negativados: " + negativados)
+
+
+</script>
