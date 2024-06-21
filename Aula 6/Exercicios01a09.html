@@ -1,0 +1,187 @@
+<script>
+
+    let menu = parseInt(prompt("Qual exercicio voce deseja visualizar?"))
+    
+    switch (menu){
+        case 1:
+            exercicio1()
+            break;
+    
+        case 2:
+            let nome = exercicio2()
+            alert(nome)
+            break;
+    
+        case 3:
+          alert(exercicio3())
+            break;
+    
+        case 4:
+          alert(exercicio4())
+            break;
+    
+        case 5:
+          alert(exercicio5())
+            break;
+
+        case 6:
+          alert(exercicio6())
+            break;
+
+        case 7:
+          alert(exercicio7())
+            break;
+    
+        case 8:
+            exercicio8()
+            break;
+
+        case 9:
+            exercicio9()
+            break;
+    
+        default:
+            break;
+    }
+
+    function exercicio1(){
+        alert("Hello World")
+    }
+
+    function exercicio2(){
+        return prompt("Digite seu nome")
+    }
+
+    function exercicio3(){
+
+        let num1 = parseFloat(prompt("Digite o primeiro número"))
+        let num2 = parseFloat(prompt("Digite o segundo número"))
+        let funcao = prompt("Qual operação deseja realizar? 1 para soma, 2 para  subtração, 3 para multiplicação e 4 para divisão")
+
+        switch (funcao){
+            case "1":
+               return num1 + num2
+                
+                break;
+        
+            case "2":
+               return num1 - num2
+                
+                break;
+        
+            case "3":
+               return num1 * num2
+                
+                break;
+        
+            case "4":
+               return num1 / num2
+                
+                break;
+        
+            default:
+                return "Operação inválida"
+                break;
+        }
+
+    }
+
+    function exercicio4(){
+        let a = prompt("Digite uma palavra")
+        let b = prompt("Digite uma palavra")
+        return (a + b)
+    }
+
+    function exercicio5(){
+        
+        let idade = parseInt(prompt("Digite sua idade"))
+
+        if (idade >= 18 ) {
+            return "Maior de idade"
+        }
+
+        else {
+            return "Menor de idade"
+        }
+    }
+
+    function exercicio6(){
+
+        let numero = parseInt(prompt("Digite um numero e descubra se ele é par ou impar"))
+        let resto = (numero % 2)
+
+        if (resto != 0) {
+            return "O número é impar"
+        }
+
+        else {
+            return "O número é par"
+        }
+
+
+    }
+
+    function exercicio7(){
+
+        let numero = parseInt(prompt("Digite um numero"))
+        let resultadoLoop = ""
+        for (i=0; i<=numero; i++){
+            resultadoLoop += ("\n" + i)
+        }
+        return resultadoLoop
+    }
+
+    function exercicio8(){
+
+        let idades = []
+        let maioresIdade = []
+        let menoresIdade = []
+        let fecharPrograma = true
+
+        while(fecharPrograma){
+
+            let idade = parseInt(prompt("Digite uma idade"))
+
+            idades.push(idade)
+            fecharPrograma = prompt("Deseja encerrar o cadastro? 0 para fechar OU Pressione ENTER para continuar") != "0"
+        }
+
+        for(i=0; i<idades.length; i++){
+            if(idades[i] >= 18){
+               
+                maioresIdade.push(i)
+            }
+            else {
+                
+                menoresIdade.push(i)
+            }
+        }
+
+        alert("Individuos Maiores de idade: " + (maioresIdade.toString()) + "\nQuantidade de Maiores de Idade: " + (maioresIdade.length));
+        alert("Individuos Menores de idade: " + (menoresIdade.toString()) + "\nQuantidade de Maiores de Idade: " + (menoresIdade.length))
+
+    }
+
+    function exercicio9(){
+        let numeros = []
+        let pares = []
+        let impares = []
+        let fecharPrograma = true
+
+        while(fecharPrograma){
+            let numero = parseInt(prompt("Digite um numero"))
+            numeros.push(numero)
+            if(numero%2 != 0){
+                impares.push(numero)
+            }
+            else{
+                pares.push(numero)
+            }
+            fecharPrograma = prompt("Deseja encerrar o cadastro? 0 para fechar OU Pressione ENTER para continuar") != "0"
+
+        }
+
+        alert("Pares: " + (pares.toString()) + "\nImpares: " + (impares.toString()))
+    }
+
+</script>
