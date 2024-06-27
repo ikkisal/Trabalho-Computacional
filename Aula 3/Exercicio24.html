@@ -3,9 +3,19 @@
     let a = parseInt(prompt("Digite o lado A"))
     let b = parseInt(prompt("Digite o lado B"))
     let c = parseInt(prompt("Digite o lado C"))
-
-    if (a<) {
-        
+    let p = (a + b + c)/2
+    let area = 0
+    if (a<=0 || b<=0 || c<=0) {
+        alert("Isso não é um tringulo")
     }
+    else if (a+b<c || a+c<b || b+c<a) {
+        alert("Isso não é um tringulo")
+    }
+
+    else {
+        area = Math.sqrt(p*(p-a)*(p-b)*(p-c))
+        alert("A área do tringulo é: " + area)
+    }
+
 
 </script>

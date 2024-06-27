@@ -1,0 +1,35 @@
+<script>
+
+    let perguntas = ["Pergunta  1 - Qual é a soma de 47 + 302 ? " , "Pergunta 2 - Qual é o nome de um triangulo que tem 3 lados iguais ? " , 
+    "Pergunta 3 - Qual é o resultado de 25% de 80 ? " , "Pergunta 4 - Qual é o nome da figura geometrica que possui 6 lados ? " , 
+    "Pergunta 5 - Qual é o numero que  está faltando na sequencia : 1, 4,9 ,16 , ___ ?"]
+
+    let respostas = [["1- 349" , "2- 343", "3- 10" , "4- 410" ] , ["1- equilatero" , "2- isosceles" , "3- escaleno" , "4- VAGNER !"] , ["1- 20" , "2- 10" , "3- 5" , "4- 40"] , [
+        "1- hexagono" , "2- pentagono" , "3- octogono" , "4- decagono"] , ["1- 25" , "2- 20" , "3- 21" , "4- 24"]]
+
+    let pontuação = 0;
+
+    for(let i = 0; i < 5; i++){
+        perguntasErespostas(i)
+    }
+
+    alert("Você acertou " + pontuação + " de 5 !");
+
+
+    function perguntasErespostas (i){
+
+        let quizz = parseInt(prompt(perguntas[i] + "\n" + respostas[i][0]  + "\n" + respostas[i][1]  + "\n" + respostas[i][2]  + "\n" + respostas[i][3]))
+
+        if(quizz == 1){ 
+         alert("Voce acertou !");
+         pontuação = pontuação + 1;
+        }
+
+        else{
+            alert("Voce errou !");
+        }
+
+    }
+
+
+</script>
