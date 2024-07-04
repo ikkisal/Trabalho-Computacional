@@ -1,5 +1,18 @@
 <script>
 
-    
+    let poluicao = parseFloat(prompt("Como esta o atual nive de poluição?"))
+
+    if (poluicao >= 0.3 && poluicao<0.4) {
+        alert("As empresas do tipo 1 devem parar o funcionamento")
+    }
+    else if (poluicao >= 0.4 && poluicao<0.5) {
+        alert("As empresas do tipo 1 e 2 devem parar o funcionamento")
+    }
+    else if (poluicao >= 0.5) {
+        alert("Todas as empresas devem parar o funcionamento")
+    }
+    else {
+        alert("Nenhuma empresa deve parar o funcionamento")
+    }
 
 </script>

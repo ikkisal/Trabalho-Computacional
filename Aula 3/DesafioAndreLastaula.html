@@ -1,0 +1,27 @@
+<script>
+
+    let listaPalavras = ["Wanderlei","Mauricio","Andrezao","Isabel","Renisson"]
+    let aleatorio = Math.floor(Math.random()*listaPalavras.length)
+
+    let palavra = listaPalavras[aleatorio]
+
+    let resposta = prompt(embaralharPalavra(palavra) + "\n Qual é a palavra correta?")
+
+    if (resposta==palavra) {
+        alert("Parabéns, você acertou!")
+    }
+    else {
+        alert("Que pena, você errou!, a palavra era: " + palavra)
+        }
+    
+
+    function embaralharPalavra(palavra){
+        let palavraEmbaralhada = []
+        palavraEmbaralhada = palavra.split('')
+        palavraEmbaralhada = palavraEmbaralhada.sort()
+        palavraEmbaralhada = palavraEmbaralhada.join()
+        
+        return palavraEmbaralhada.toLowerCase()
+    }
+
+</script>
