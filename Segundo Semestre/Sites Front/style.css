@@ -10,11 +10,17 @@ header{
     height: 150px;
     background-color: brown;
     color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .textoHeader{
     text-align: center;
     align-items: center;
+    height: 100px;
+    width: 30%;
 }
 
 header h1 {
@@ -23,4 +29,37 @@ header h1 {
 
 header h2 {
     font-size: 20px;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.main_content {
+    width: 80%;
+    height: 800px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.main_gallery {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 600px;
+    line-height: 50px;
+    
+}
+
+.main_gallery img {
+    height: 300px;
+    width: 300px;
+    margin-left: 35px;
+    margin-right: 35px;
+    margin-top: 20px;
+    border-radius: 5px;
 }
