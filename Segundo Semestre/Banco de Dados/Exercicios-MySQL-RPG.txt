@@ -1,0 +1,369 @@
+Exercicios:
+
+mostrar todos os monstros da região de id 5
+
+mostrar nome de todos heróis do grupo de id 1
+
+mostrar todas as classes
+
+mostrar todos os itens de raridade 2, que estão equipados pelo herói 3
+
+mostrar as habilidades do herói 7
+
+mostrar todos os itens do herói 4
+
+MySQL
+
+
+
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema rpg
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS rpg ;
+
+-- -----------------------------------------------------
+-- Schema rpg
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS rpg DEFAULT CHARACTER SET utf8 ;
+USE rpg ;
+
+-- -----------------------------------------------------
+-- Table rpg.classe
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS rpg.classe ;
+
+CREATE TABLE IF NOT EXISTS rpg.classe (
+  id_classe INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id_classe))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table rpg.grupo
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS rpg.grupo ;
+
+CREATE TABLE IF NOT EXISTS rpg.grupo (
+  id_grupo INT NOT NULL,
+  nome_grupo VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id_grupo))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table rpg.usuario
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS rpg.usuario ;
+
+CREATE TABLE IF NOT EXISTS rpg.usuario (
+  id_usuario INT NOT NULL,
+  nome VARCHAR(45) NOT NULL,
+  senha VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id_usuario))
+ENGINE = InnoDB;
+
+
+
+-- -----------------------------------------------------
+-- Table rpg.monstros
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS rpg.monstros ;
+
+CREATE TABLE IF NOT EXISTS rpg.monstros (
+  id_monstros INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(45) NOT NULL,
+  tipo VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id_monstros))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table rpg.itens
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS rpg.itens ;
+
+CREATE TABLE IF NOT EXISTS rpg.itens (
+  id_itens INT NOT NULL AUTO_INCREMENT,
+  tipo VARCHAR(45) NOT NULL,
+  level VARCHAR(45) NOT NULL,
+  raridade VARCHAR(45) NOT NULL,
+  classe_restricao VARCHAR(45) NULL,
+  equipado TINYINT NOT NULL,
+  id_monstros INT NOT NULL,
+  PRIMARY KEY (id_itens),
+  INDEX fk_itens_monstros1_idx (id_monstros ASC) ,
+  CONSTRAINT fk_itens_monstros1
+    FOREIGN KEY (id_monstros)
+    REFERENCES rpg.monstros (id_monstros)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table rpg.heroi
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS rpg.heroi ;
+
+CREATE TABLE IF NOT EXISTS rpg.heroi (
+  id_heroi INT NOT NULL AUTO_INCREMENT,
+  vitalidade INT NOT NULL,
+  forca INT NOT NULL,
+  agilidade INT NOT NULL,
+  inteligencia INT NOT NULL,
+  nivel INT NOT NULL,
+  nome VARCHAR(45) NOT NULL,
+  id_classe INT NOT NULL,
+  experiencia INT NOT NULL,
+  id_grupo INT NULL,
+  id_usuario INT NOT NULL,
+  PRIMARY KEY (id_heroi),
+  INDEX fk_heroi_classe1_idx (id_classe ASC) ,
+  INDEX fk_heroi_grupo1_idx (id_grupo ASC) ,
+  INDEX fk_heroi_usuario1_idx (id_usuario ASC) ,
+  CONSTRAINT fk_heroi_classe1
+    FOREIGN KEY (id_classe)
+    REFERENCES rpg.classe (id_classe)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT fk_heroi_grupo1
+    FOREIGN KEY (id_grupo)
+    REFERENCES rpg.grupo (id_grupo)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT fk_heroi_usuario1
+    FOREIGN KEY (id_usuario)
+    REFERENCES rpg.usuario (id_usuario)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table rpg.inventario
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS rpg.inventario ;
+
+CREATE TABLE IF NOT EXISTS rpg.inventario (
+  id_inventario INT NOT NULL AUTO_INCREMENT,
+  id_itens INT NOT NULL,
+  id_heroi INT NOT NULL,
+  ouro INT NULL,
+  PRIMARY KEY (id_inventario),
+  INDEX fk_inventario_itens_idx (id_itens ASC),
+  INDEX fk_inventario_heroi1_idx (id_heroi ASC),
+  CONSTRAINT fk_inventario_itens
+    FOREIGN KEY (id_itens)
+    REFERENCES rpg.itens (id_itens)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT fk_inventario_heroi1
+    FOREIGN KEY (id_heroi)
+    REFERENCES rpg.heroi (id_heroi)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table rpg.habilidades
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS rpg.habilidades ;
+
+CREATE TABLE IF NOT EXISTS rpg.habilidades (
+  id_habilidade INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(45) NOT NULL,
+  id_classe INT NOT NULL,
+  restricao_nivel INT NOT NULL,
+  PRIMARY KEY (id_habilidade),
+  INDEX fk_habilidades_classe1_idx (id_classe ASC) ,
+  CONSTRAINT fk_habilidades_classe1
+    FOREIGN KEY (id_classe)
+    REFERENCES rpg.classe (id_classe)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table rpg.regioes
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS rpg.regioes ;
+
+CREATE TABLE IF NOT EXISTS rpg.regioes (
+  id_regioes INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id_regioes))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table rpg.monstros_has_regioes
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS rpg.monstros_has_regioes ;
+
+CREATE TABLE IF NOT EXISTS rpg.monstros_has_regioes (
+  id_monstros INT NOT NULL,
+  id_regioes INT NOT NULL,
+  PRIMARY KEY (id_monstros, id_regioes),
+  INDEX fk_monstros_has_regioes_regioes1_idx (id_regioes ASC) ,
+  INDEX fk_monstros_has_regioes_monstros1_idx (id_monstros ASC) ,
+  CONSTRAINT fk_monstros_has_regioes_monstros1
+    FOREIGN KEY (id_monstros)
+    REFERENCES rpg.monstros (id_monstros)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT fk_monstros_has_regioes_regioes1
+    FOREIGN KEY (id_regioes)
+    REFERENCES rpg.regioes (id_regioes)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+INSERT INTO rpg.classe (nome) VALUES 
+('Arqueiro'),
+('Mago'),
+('Clerigo'),
+('Guerreiro');
+
+INSERT INTO rpg.grupo (id_grupo, nome_grupo) VALUES 
+(1, 'Grupo dos Valentes'),
+(2, 'Liga dos Mágicos'),
+(3, 'Cavaleiros da Luz'),
+(4, 'Clã dos Arqueiros'),
+(5, 'Ordem dos Sábios'),
+(6, 'Herdeiros da Terra'),
+(7, 'Fraternidade dos Guerreiros'),
+(8, 'Aliança dos Elementais'),
+(9, 'Companhia dos Anciãos'),
+(10, 'Guardiões das Sombras');
+
+INSERT INTO rpg.usuario (id_usuario, nome, senha) VALUES 
+(1, 'arthur', 'senha123'),
+(2, 'morgana', 'senha456'),
+(3, 'lancelot', 'senha789'),
+(4, 'guinevere', 'senha101'),
+(5, 'merlin', 'senha112'),
+(6, 'galahad', 'senha131'),
+(7, 'tristan', 'senha415'),
+(8, 'isolda', 'senha161'),
+(9, 'gawain', 'senha718'),
+(10, 'eliane', 'senha192');
+
+INSERT INTO rpg.heroi (vitalidade, forca, agilidade, inteligencia, nivel, nome, id_classe, experiencia, id_grupo, id_usuario) VALUES 
+(120, 90, 70, 50, 1, 'Artemis', 1, 100, 1, 1),
+(100, 60, 80, 90, 2, 'Zephyr', 2, 200, 2, 2),
+(150, 100, 50, 60, 3, 'Elara', 3, 300, 3, 3),
+(130, 110, 60, 70, 4, 'Thor', 4, 400, 4, 4),
+(140, 80, 75, 85, 5, 'Freya', 1, 500, 5, 5),
+(110, 70, 90, 95, 6, 'Luna', 2, 600, 6, 6),
+(160, 120, 65, 55, 7, 'Baldur', 3, 700, 7, 7),
+(120, 90, 85, 80, 8, 'Hel', 4, 800, 8, 8),
+(150, 100, 70, 75, 9, 'Odin', 1, 900, 9, 9),
+(130, 80, 80, 85, 10, 'Frigg', 2, 1000, 10, 10);
+
+INSERT INTO rpg.monstros (nome, tipo) VALUES 
+('Goblin', 'Terrestre'),
+('Dragão', 'Fogo'),
+('Esqueleto', 'Mortos-vivos'),
+('Grifo', 'Aéreo'),
+('Minotauro', 'Terrestre'),
+('Quimera', 'Fogo'),
+('Múmia', 'Mortos-vivos'),
+('Fênix', 'Aéreo'),
+('Lobisomem', 'Terrestre'),
+('Hydra', 'Fogo');
+
+INSERT INTO rpg.inventario (id_itens,id_heroi, ouro) VALUES 
+(1, 1, 100),
+(2, 2, 200),
+(3, 3, 300),
+(4, 4, 400),
+(5, 5, 500),
+(6, 6, 600),
+(7, 7, 700),
+(8, 8, 800),
+(9, 9, 900),
+(10, 10, 1000);
+
+INSERT INTO rpg.habilidades (nome, id_classe, restricao_nivel) VALUES 
+('Disparo Rápido', 1, 5),
+('Flecha de Fogo', 1, 10),
+('Camuflagem', 1, 15),
+('Armadura de Gelo', 2, 5),
+('Explosão Mágica', 2, 10),
+('Barreira Mágica', 2, 15),
+('Cura Divina', 3, 5),
+('Escudo Sagrado', 3, 10),
+('Raio Divino', 3, 15),
+('Golpe Devastador', 4, 5),
+('Berserk', 4, 10),
+('Carga Feroz', 4, 15);
+
+INSERT INTO rpg.regioes (nome) VALUES 
+('Floresta Encantada'),
+('Montanhas Geladas'),
+('Deserto das Areias'),
+('Planícies Verdejantes'),
+('Cavernas Profundas'),
+('Ruínas Antigas'),
+('Lago das Nuvens'),
+('Bosque Sombrio'),
+('Ilha Mística'),
+('Fortaleza das Trevas');
+
+INSERT INTO rpg.monstros_has_regioes (id_monstros, id_regioes) VALUES 
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8),
+(9, 9),
+(10, 10),
+(1, 3),
+(2, 4),
+(3, 5),
+(4, 6),
+(5, 7),
+(6, 8),
+(7, 9),
+(8, 10),
+(9, 1),
+(10, 2);
+
+SELECT m.nome
+FROM rpg.monstros m
+JOIN rpg.monstros_has_regioes mr
+ON m.id_monstros = mr.id_monstros
+WHERE mr.id_regioes = 5;
+
+select h.nome
+from rpg.heroi h
+where id_grupo = 1;
+
+select nome
+from rpg.classe;
+
+SELECT i.*
+FROM rpg.itens i
+inner JOIN rpg.inventario inv ON i.id_itens = inv.itens_id_itens
+WHERE i.raridade = '2' AND inv.heroi_id_heroi = 3;
+
+select hab.nome
+from rpg.habilidades hab
+where id_heroi = 7;
