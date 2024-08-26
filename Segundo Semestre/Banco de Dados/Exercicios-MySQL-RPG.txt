@@ -1,16 +1,16 @@
-Exercicios:
+-- Exercicios:
 
-mostrar todos os monstros da região de id 5
+-- mostrar todos os monstros da região de id 5
 
-mostrar nome de todos heróis do grupo de id 1
+-- mostrar nome de todos heróis do grupo de id 1
 
-mostrar todas as classes
+-- mostrar todas as classes
 
-mostrar todos os itens de raridade 2, que estão equipados pelo herói 3
+-- mostrar todos os itens de raridade 2, que estão equipados pelo herói 3
 
-mostrar as habilidades do herói 7
+-- mostrar as habilidades do herói 7
 
-mostrar todos os itens do herói 4
+-- mostrar todos os itens do herói 4
 
 MySQL
 
