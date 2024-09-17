@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Biblioteca</title>
+    <link rel="stylesheet" href="upload.css">
+    
+</head>
+<body>
+    <header>
+        <h1>Gerenciador de Biblioteca</h1>
+    </header>
+    <div >
+        <h2>Upload de Arquivo CSV</h2>
+    </div>
+    <input type="file" id="fileInput" />
+    <button onclick="processFile()">Processar Arquivo</button>
+
+    <h2>Tabelas</h2>
+    <div class="table-container">
+        <div>
+            <button class="toggle-table" data-table-id="autoresTable">Mostrar Autores</button>
+            <table id="autoresTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Nascimento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <button class="toggle-table" data-table-id="estudantesTable">Mostrar Autores</button>
+            <table id="estudantesTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Curso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <button class="toggle-table" data-table-id="livrosTable">Mostrar Autores</button>
+            <table id="livrosTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Ano</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <button class="toggle-table" data-table-id="emprestimosTable">Mostrar Autores</button>
+            <table id="emprestimosTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Estudante</th>
+                        <th>Livro</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        class Autor {
+            constructor(ID, Nome, Nascimento) {
+                this.ID = ID;
+                this.Nome = Nome;
+                this.Nascimento = Nascimento;
+            }
+        }
+
+        class Estudante {
+            constructor(ID, Nome, Curso) {
+                this.ID = ID;
+                this.Nome = Nome;
+                this.Curso = Curso;
+            }
+        }
+
+        class Livro {
+            constructor(ID, Titulo, AutorID, Ano) {
+                this.ID = ID;
+                this.Titulo = Titulo;
+                this.AutorID = AutorID;
+                this.Ano = Ano;
+            }
+        }
+
+        class Emprestimo {
+            constructor(ID, EstudanteID, LivroID, Data) {
+                this.ID = ID;
+                this.EstudanteID = EstudanteID;
+                this.LivroID = LivroID;
+                this.Data = Data;
+            }
+        }
+
+        let autores = [];
+        let estudantes = [];
+        let livros = [];
+        let emprestimos = [];
+
+        let currentFileType = '';
+
+        function processFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert('Por favor, selecione um arquivo CSV.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const csvData = event.target.result;
+                const rows = csvData.split('\n').slice(1); // Ignorar o cabeçalho
+
+                switch (currentFileType) {
+                    case 'autores':
+                        autores = rows.map(row => {
+                            const [ID, Nome, Nascimento] = row.split(';');
+                            return new Autor(ID, Nome, Nascimento);
+                        });
+                        break;
+                    case 'estudantes':
+                        estudantes = rows.map(row => {
+                            const [ID, Nome, Curso] = row.split(';');
+                            return new Estudante(ID, Nome, Curso);
+                        });
+                        break;
+                    case 'livros':
+                        livros = rows.map(row => {
+                            const [ID, Titulo, AutorID, Ano] = row.split(';');
+                            return new Livro(ID, Titulo, AutorID, Ano);
+                        });
+                        break;
+                    case 'emprestimos':
+                        emprestimos = rows.map(row => {
+                            const [ID, EstudanteID, LivroID, Data] = row.split(';');
+                            return new Emprestimo(ID, EstudanteID, LivroID, Data);
+                        });
+                        break;
+                }
+                displayData();
+            };
+
+            reader.readAsText(file);
+            fileInput.value = ''; // Limpa o campo de arquivo após o upload
+
+            // Atualiza o tipo de arquivo para o próximo carregamento
+            if (currentFileType === '') {
+                currentFileType = 'autores';
+            } else if (currentFileType === 'autores') {
+                currentFileType = 'estudantes';
+            } else if (currentFileType === 'estudantes') {
+                currentFileType = 'livros';
+            } else if (currentFileType === 'livros') {
+                currentFileType = 'emprestimos';
+            } else {
+                alert('Todos os arquivos foram carregados.');
+                currentFileType = ''; // Reseta para permitir novo carregamento
+            }
+        }
+
+        function displayData() {
+            function findByID(array, id) {
+                return array.find(item => item.ID === id);
+            }
+
+            const autoresTableBody = document.querySelector('#autoresTable tbody');
+            autoresTableBody.innerHTML = autores.map(a => 
+                `<tr>
+                    <td>${a.ID}</td>
+                    <td>${a.Nome}</td>
+                    <td>${a.Nascimento}</td>
+                </tr>`
+            ).join('');
+
+            const estudantesTableBody = document.querySelector('#estudantesTable tbody');
+            estudantesTableBody.innerHTML = estudantes.map(e => 
+                `<tr>
+                    <td>${e.ID}</td>
+                    <td>${e.Nome}</td>
+                    <td>${e.Curso}</td>
+                </tr>`
+            ).join('');
+
+            const livrosTableBody = document.querySelector('#livrosTable tbody');
+            livrosTableBody.innerHTML = livros.map(l => {
+                const autor = findByID(autores, l.AutorID);
+                return `<tr>
+                    <td>${l.ID}</td>
+                    <td>${l.Titulo}</td>
+                    <td>${autor ? autor.Nome : 'Desconhecido'}</td>
+                    <td>${l.Ano}</td>
+                </tr>`;
+            }).join('');
+
+            const emprestimosTableBody = document.querySelector('#emprestimosTable tbody');
+            emprestimosTableBody.innerHTML = emprestimos.map(e => {
+                const estudante = findByID(estudantes, e.EstudanteID);
+                const livro = findByID(livros, e.LivroID);
+                return `<tr>
+                    <td>${e.ID}</td>
+                    <td>${estudante ? estudante.Nome : 'Desconhecido'}</td>
+                    <td>${livro ? livro.Titulo : 'Desconhecido'}</td>
+                    <td>${e.Data}</td>
+                </tr>`;
+            }).join('');
+        }
+
+        const toggleButtons = document.querySelectorAll('.toggle-table');
+
+        toggleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+        const tableId = button.getAttribute('data-table-id');
+        const table = document.getElementById(tableId);
+        table.style.display = table.style.display === 'none' ? 'block' : 'none';
+        button.textContent = table.style.display === 'block' ? 'Ocultar' : 'Mostrar';
+        });
+        });
+    </script>
+</body>
+</html>

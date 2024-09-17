@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function testandoArvoreDOM(){
+            //document: representa o documento principal
+            //documentElement: Captura o elemento raiz <HTML>
+            //lastChild(): 
+            var element = document.documentElement.lastChild
+            //nodeName pega o nome do no
+            alert("Eu sou o node1: " + element.nodeName)
+            //getElementByTagName: pega o elemento que tem a tag com aquele nome
+            var outroElemento = document.getElementsByTagName('h1')[0];
+            //nodeName pega o nome do no
+            alert("Eu sou o node2: " + outroElemento.nodeName);
+
+            //FirstChild(): retorna o primeiro elemento filho (node)
+            var filho = outroElemento.firstChild;
+            //nodeName: pega o Nome do no
+            alert("Eu sou o node3: " + filho.nodeValue)
+        }
+    </script>
+</head>
+<body>
+    <h1>Teste de Titulo</h1>
+    <p>Voce esta Aprendendo a Ultilizar Arvore em DOM
+        <a href="www.google.com"></a>
+    </p>
+    <span onclick="testandoArvoreDOM()">Clique aqui para testar</span>
+    
+</body>
+</html>

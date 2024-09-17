@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex5</title>
+</head>
+<body>
+    <ul>
+        <li>Eu</li>
+        <li>Ikki</li>
+        <li>Joao</li> 
+    </ul>
+    <button onclick="inserir()">Inserir</button>
+    <button onclick="remover()">Remover</button>
+    <script>
+        function inserir(){
+        const element = document.createElement('li')
+        element.textContent = "Gaming"
+
+        const lista = document.getElementsByTagName('ul')
+
+        lista[0].appendChild(element);
+        }
+
+        function remover(){
+
+            const lista = document.getElementsByTagName('ul');
+
+            const ultimoItem = lista[0].lastChild;
+
+            lista.removeChild(ultimoItem);
+        }
+
+        function inserir(){ const element = document.createElement('li') 
+        
+        element.textContent = "Gaming" 
+        
+        const lista = document.getElementsByTagName('ul') 
+        
+        lista[0].appendChild(element); } 
+        
+        function remover(){ 
+            const lista = document.getElementById('lista'); 
+            
+            const ultimoItem = lista.lastElementChild; 
+            
+            lista.removeChild(ultimoItem); 
+        }
+
+    </script>    
+</body>
+</html>

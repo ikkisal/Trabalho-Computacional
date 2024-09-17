@@ -1,0 +1,41 @@
+<script>
+    
+    let numero1 = parseFloat(prompt("Digite o Operando"));
+    let numero2 = parseFloat(prompt("Digite o Operador"));
+    let operacao = prompt("Qual operacao deseja realizar?\n + para somar\n - para subtrair\n* para multiplicacao\n/ para divisao");
+    let resultado;
+
+
+    switch (operacao) {
+        case "+":
+            resultado = numero1 + numero2;
+            alert("O Resultado foi: " + resultado)
+            
+            break;
+    
+        case "-":
+            resultado = numero1 - numero2;
+            alert("O Resultado foi: " + resultado)
+            
+            break;
+    
+        case "*":
+            resultado = numero1 * numero2;
+            alert("O Resultado foi: " + resultado)
+            
+            break;
+    
+        case "/":
+            resultado = numero1 / numero2;
+            alert("O Resultado foi: " + resultado)
+            
+            break;
+    
+        default:
+            alert("Reenicie o programa e coloque uma operação valida")
+            break;
+    }
+
+
+
+</script>
