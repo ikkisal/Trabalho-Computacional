@@ -19,11 +19,12 @@ header {
     
 .table-container {
         display: flex;
+        justify-content: space-around;
         flex-wrap: wrap;
-        gap: 20px; /* Espaço entre as tabelas */
+        gap: 20px; 
     }
 table {
-        width: 200px; /* Largura reduzida das tabelas */
+        width: 200px; 
         border-collapse: collapse;
         margin-bottom: 20px;
     }
@@ -31,7 +32,7 @@ table, th, td {
         border: 1px solid black;
     }
 th, td {
-        padding: 4px; /* Reduzido para melhor visualização com tamanhos reduzidos */
+        padding: 4px; 
         text-align: left;
     }
 th {

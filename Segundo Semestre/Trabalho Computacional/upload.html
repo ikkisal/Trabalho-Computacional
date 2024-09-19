@@ -12,15 +12,15 @@
         <h1>Gerenciador de Biblioteca</h1>
     </header>
     <div >
-        <h2>Upload de Arquivo CSV</h2>
+        <h2>Upload dos Arquivos</h2>
     </div>
     <input type="file" id="fileInput" />
-    <button onclick="processFile()">Processar Arquivo</button>
+    <button onclick="processFile()">Enviar</button>
 
     <h2>Tabelas</h2>
     <div class="table-container">
         <div>
-            <button class="toggle-table" data-table-id="autoresTable">Mostrar Autores</button>
+            <button class="toggle-table" data-table-id="autoresTable">Carregar</button>
             <table id="autoresTable">
                 <thead>
                     <tr>
@@ -35,7 +35,7 @@
         </div>
 
         <div>
-            <button class="toggle-table" data-table-id="estudantesTable">Mostrar Autores</button>
+            <button class="toggle-table" data-table-id="estudantesTable">Carregar</button>
             <table id="estudantesTable">
                 <thead>
                     <tr>
@@ -50,7 +50,7 @@
         </div>
 
         <div>
-            <button class="toggle-table" data-table-id="livrosTable">Mostrar Autores</button>
+            <button class="toggle-table" data-table-id="livrosTable">Carregar</button>
             <table id="livrosTable">
                 <thead>
                     <tr>
@@ -66,7 +66,7 @@
         </div>
 
         <div>
-            <button class="toggle-table" data-table-id="emprestimosTable">Mostrar Autores</button>
+            <button class="toggle-table" data-table-id="emprestimosTable">Carregar</button>
             <table id="emprestimosTable">
                 <thead>
                     <tr>
@@ -168,9 +168,8 @@
             };
 
             reader.readAsText(file);
-            fileInput.value = ''; // Limpa o campo de arquivo após o upload
+            fileInput.value = ''; 
 
-            // Atualiza o tipo de arquivo para o próximo carregamento
             if (currentFileType === '') {
                 currentFileType = 'autores';
             } else if (currentFileType === 'autores') {
@@ -181,7 +180,7 @@
                 currentFileType = 'emprestimos';
             } else {
                 alert('Todos os arquivos foram carregados.');
-                currentFileType = ''; // Reseta para permitir novo carregamento
+                currentFileType = '';    
             }
         }
 
