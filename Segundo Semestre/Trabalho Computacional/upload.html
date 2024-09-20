@@ -16,10 +16,10 @@
         <input type="file" id="fileInput" />
     <button onclick="processFile()">Enviar</button>
     </div>
-    <h2>Tabelas</h2>
+    <div class="tab"><h2>Tabelas</h2></div>
     <div class="table-container">
         <div>
-            <button class="toggle-table" data-table-id="autoresTable">Carregar</button>
+            <button class="toggle-table" data-table-id="autoresTable">Ocultar</button>
             <table id="autoresTable">
                 <thead>
                     <tr>
@@ -34,7 +34,7 @@
         </div>
 
         <div>
-            <button class="toggle-table" data-table-id="estudantesTable">Carregar</button>
+            <button class="toggle-table" data-table-id="estudantesTable">Ocultar</button>
             <table id="estudantesTable">
                 <thead>
                     <tr>
@@ -49,7 +49,7 @@
         </div>
 
         <div>
-            <button class="toggle-table" data-table-id="livrosTable">Carregar</button>
+            <button class="toggle-table" data-table-id="livrosTable">Ocultar</button>
             <table id="livrosTable">
                 <thead>
                     <tr>
@@ -65,7 +65,7 @@
         </div>
 
         <div>
-            <button class="toggle-table" data-table-id="emprestimosTable">Carregar</button>
+            <button class="toggle-table" data-table-id="emprestimosTable">Ocultar</button>
             <table id="emprestimosTable">
                 <thead>
                     <tr>
@@ -135,7 +135,7 @@
             const reader = new FileReader();
             reader.onload = function (event) {
                 const csvData = event.target.result;
-                const rows = csvData.split('\n').slice(1); // Ignorar o cabeçalho
+                const rows = csvData.split('\n').slice(1);
 
                 switch (currentFileType) {
                     case 'autores':
